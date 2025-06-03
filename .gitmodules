@@ -1,0 +1,3 @@
+[submodule "VagHelper"]
+	path = VagHelper
+	url = https://github.com/charmicat/VagHelper.git

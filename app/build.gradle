@@ -2,6 +2,7 @@ plugins {
     id('com.android.application')
     id 'com.google.gms.google-services'
     id 'com.google.firebase.crashlytics'
+    id 'org.jetbrains.kotlin.android'
 }
 
 // Creates a variable called keystorePropertiesFile, and initializes it to the
@@ -9,18 +10,24 @@ plugins {
 def keystorePropertiesFile = rootProject.file("keystore.properties")
 // Initializes a new Properties() object called keystoreProperties.
 def keystoreProperties = new Properties()
+def hasCustomKeystore = false
 // Loads the keystore.properties file into the keystoreProperties object.
-keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+    hasCustomKeystore = true
+}
 
 android {
-    compileSdkVersion 33
+    compileSdk 33
 
     signingConfigs {
         debug {
-            keyAlias keystoreProperties['keyAlias']
-            keyPassword keystoreProperties['keyPassword']
-            storeFile file(keystoreProperties['storeFile'])
-            storePassword keystoreProperties['storePassword']
+            if (hasCustomKeystore) {
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+                storeFile file(keystoreProperties['storeFile'])
+                storePassword keystoreProperties['storePassword']
+            }
         }
     }
     namespace 'com.vag.mychime'
@@ -33,7 +40,9 @@ android {
         versionName '6.0'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        signingConfig signingConfigs.debug
+        if (hasCustomKeystore) {
+            signingConfig signingConfigs.debug
+        }
         proguardFiles getDefaultProguardFile('proguard-android.txt')
     }
 
@@ -47,6 +56,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
+    kotlinOptions {
+        jvmTarget = '11'
+    }
     buildFeatures {
         viewBinding true
     }
@@ -56,6 +68,7 @@ dependencies {
     // Import the BoM for the Firebase platform
     implementation platform('com.google.firebase:firebase-bom:34.4.0')
 
+    implementation 'androidx.core:core-ktx:1.15.0'
     implementation 'com.google.android.material:material:1.13.0'
     implementation 'androidx.preference:preference:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.2.1'

@@ -12,7 +12,8 @@ import androidx.preference.SwitchPreferenceCompat
 import com.vag.mychime.R
 import androidx.preference.PreferenceManager
 
-class MyPreferences : PreferenceFragmentCompat(), SharedPreferences.OnSharedPreferenceChangeListener {
+class MyPreferences : PreferenceFragmentCompat(),
+    SharedPreferences.OnSharedPreferenceChangeListener {
 
     private var onCfgChangedCB: OnConfigurationChangedListener? = null
     private lateinit var settings: SharedPreferences
@@ -185,6 +186,13 @@ class MyPreferences : PreferenceFragmentCompat(), SharedPreferences.OnSharedPref
         val activity = activity ?: return ""
         val myPreferences = activity.getSharedPreferences(SHARED_PREFERENCES, Context.MODE_PRIVATE)
         return if (myPreferences.contains(key)) myPreferences.getString(key, "") ?: "" else ""
+    }
+
+    override fun onSharedPreferenceChanged(
+        p0: SharedPreferences?,
+        p1: String?
+    ) {
+        TODO("Not yet implemented")
     }
 
     companion object {

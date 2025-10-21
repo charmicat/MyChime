@@ -2,6 +2,7 @@ plugins {
     id('com.android.application')
     id 'com.google.gms.google-services'
     id 'com.google.firebase.crashlytics'
+    id 'org.jetbrains.kotlin.android'
 }
 
 // Creates a variable called keystorePropertiesFile, and initializes it to the
@@ -9,31 +10,50 @@ plugins {
 def keystorePropertiesFile = rootProject.file("keystore.properties")
 // Initializes a new Properties() object called keystoreProperties.
 def keystoreProperties = new Properties()
-// Loads the keystore.properties file into the keystoreProperties object.
-keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+def hasCustomKeystore = false
+// Loads the keystore.properties file into the keystoreProperties object and
+// ensure the referenced keystore file actually exists before enabling custom signing.
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+    def storeFilePath = keystoreProperties['storeFile']
+    if (storeFilePath != null && rootProject.file(storeFilePath).exists()) {
+        hasCustomKeystore = true
+    } else {
+        hasCustomKeystore = false
+        println "WARNING: keystore.properties found but storeFile '${storeFilePath}' does not exist; skipping custom signing config."
+    }
+}
 
 android {
-    compileSdkVersion 33
+    compileSdk 36
 
     signingConfigs {
         debug {
-            keyAlias keystoreProperties['keyAlias']
-            keyPassword keystoreProperties['keyPassword']
-            storeFile file(keystoreProperties['storeFile'])
-            storePassword keystoreProperties['storePassword']
+            storeFile file(storeFile)
+            storePassword storePassword
+            keyAlias keyAlias
+            keyPassword keyPassword
+            if (hasCustomKeystore) {
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+                storeFile file(keystoreProperties['storeFile'])
+                storePassword keystoreProperties['storePassword']
+            }
         }
     }
     namespace 'com.vag.mychime'
 
     defaultConfig {
         applicationId 'com.vag.mychime'
-        minSdk 23
-        targetSdk 33
+        minSdk 26
+        targetSdk 34
         versionCode 19
         versionName '6.0'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        signingConfig signingConfigs.debug
+        if (hasCustomKeystore) {
+            signingConfig signingConfigs.debug
+        }
         proguardFiles getDefaultProguardFile('proguard-android.txt')
     }
 
@@ -56,14 +76,15 @@ dependencies {
     // Import the BoM for the Firebase platform
     implementation platform('com.google.firebase:firebase-bom:34.4.0')
 
+    implementation 'androidx.core:core-ktx:1.17.0'
     implementation 'com.google.android.material:material:1.13.0'
-    implementation 'androidx.preference:preference:1.2.1'
+    implementation 'androidx.preference:preference-ktx:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
-    implementation 'androidx.navigation:navigation-fragment:2.9.5'
-    implementation 'androidx.navigation:navigation-ui:2.9.5'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.9.5'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.9.5'
     implementation 'io.github.charmicat:vaghelper:2.0.1'
-    implementation 'com.google.firebase:firebase-crashlytics'
-    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-crashlytics:20.0.3'
+    implementation 'com.google.firebase:firebase-analytics:23.0.0'
 
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     testImplementation('androidx.test:monitor:1.8.0')

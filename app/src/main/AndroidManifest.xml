@@ -5,6 +5,10 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SYSTEM_EXEMPTED" />
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:allowBackup="true"
@@ -15,7 +19,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyChime"
-        tools:targetApi="31">
+        tools:targetApi="34">
         <activity
             android:name="com.vag.mychime.activity.MainActivity"
             android:exported="true"
@@ -28,7 +32,8 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name="com.vag.mychime.receiver.BootUpReceiver"
+        <receiver
+            android:name="com.vag.mychime.receiver.BootUpReceiver"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -45,7 +50,8 @@
         <service
             android:name="com.vag.mychime.service.TimeService"
             android:enabled="true"
-            android:exported="false" />
+            android:exported="false"
+            android:foregroundServiceType="systemExempted" />
 
     </application>
     <queries>

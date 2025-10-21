@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentStart="true">
+
+    <EditText
+        android:id="@+id/repeatVal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="411dp"
+        android:allowUndo="true"
+        android:autofillHints=""
+        android:ems="3"
+        android:inputType="number"
+        android:singleLine="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="60" />
+
+    <RadioGroup
+        android:id="@+id/interval_period"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/repeatVal">
+
+        <RadioButton
+            android:id="@+id/radio_seconds"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/seconds_cpt" />
+
+        <RadioButton
+            android:id="@+id/radio_minutes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/minutes_cpt"
+            app:layout_constraintBottom_toBottomOf="@id/radio_seconds" />
+
+        <RadioButton
+            android:id="@+id/radio_hours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hours_cpt"
+            app:layout_constraintBottom_toBottomOf="@id/radio_minutes" />
+    </RadioGroup>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

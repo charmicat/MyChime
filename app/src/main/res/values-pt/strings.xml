@@ -57,5 +57,8 @@
     <string name="vibrationModeCpt">Modo de vibração</string>
     <string name="chimeModeCpt">Modo de bipe</string>
     <string name="speakModeCpt">Modo de fala</string>
+    <string name="seconds_cpt">Segundos</string>
+    <string name="minutes_cpt">Minutos</string>
+    <string name="hours_cpt">Horas</string>
 
 </resources>

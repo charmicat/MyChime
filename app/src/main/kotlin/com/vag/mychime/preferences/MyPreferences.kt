@@ -11,11 +11,13 @@ import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
 import com.vag.mychime.R
 import androidx.preference.PreferenceManager
+import androidx.core.content.edit
 
 class MyPreferences : PreferenceFragmentCompat(),
     SharedPreferences.OnSharedPreferenceChangeListener {
 
-    private var onCfgChangedCB: OnConfigurationChangedListener? = null
+    internal var onCfgChangedCB: OnConfigurationChangedListener? = null
+
     private lateinit var settings: SharedPreferences
 
     private val tag = "MyPreferences"
@@ -37,7 +39,7 @@ class MyPreferences : PreferenceFragmentCompat(),
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         Log.d(tag, "onCreatePreferences rootKey: $rootKey")
 
-        settings = PreferenceManager.getDefaultSharedPreferences(context)
+        settings = PreferenceManager.getDefaultSharedPreferences(requireContext())
         hasVibration = settings.getBoolean("hasVibration", false)
         Log.d(tag, "onCreatePreferences ${settings.all}")
         setPreferencesFromResource(R.xml.root_preferences, rootKey)
@@ -155,12 +157,12 @@ class MyPreferences : PreferenceFragmentCompat(),
 
         onCfgChangedCB = try {
             activity as OnConfigurationChangedListener
-        } catch (e: ClassCastException) {
+        } catch (_: ClassCastException) {
             throw ClassCastException("$activity must implement OnConfigurationSavedListener")
         }
     }
 
-    override fun onSharedPreferenceChanged(pref: SharedPreferences, key: String) {
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
         Log.d(tag, "onSharedPreferenceChanged: key $key")
         Log.d(tag, "onSharedPreferenceChanged: ${settings.all}")
         onCfgChangedCB?.onConfigurationChanged()
@@ -168,31 +170,24 @@ class MyPreferences : PreferenceFragmentCompat(),
 
     override fun onResume() {
         super.onResume()
-        preferenceScreen.sharedPreferences.registerOnSharedPreferenceChangeListener(this)
+        preferenceScreen.sharedPreferences?.registerOnSharedPreferenceChangeListener(this)
     }
 
     override fun onPause() {
         super.onPause()
-        preferenceScreen.sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
+        preferenceScreen.sharedPreferences?.unregisterOnSharedPreferenceChangeListener(this)
     }
 
-    private fun savePreferences(key: String, value: String) {
-        val activity = activity ?: return
-        val myPreferences = activity.getSharedPreferences(SHARED_PREFERENCES, Context.MODE_PRIVATE)
-        myPreferences.edit().putString(key, value).apply()
+    @Suppress("unused")
+    internal fun savePreferences(context: Context, key: String, value: String) {
+        val myPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+        myPreferences.edit { putString(key, value) }
     }
 
-    private fun restorePreferences(key: String): String {
-        val activity = activity ?: return ""
-        val myPreferences = activity.getSharedPreferences(SHARED_PREFERENCES, Context.MODE_PRIVATE)
+    @Suppress("unused")
+    internal fun restorePreferences(context: Context, key: String): String {
+        val myPreferences = PreferenceManager.getDefaultSharedPreferences(context)
         return if (myPreferences.contains(key)) myPreferences.getString(key, "") ?: "" else ""
-    }
-
-    override fun onSharedPreferenceChanged(
-        p0: SharedPreferences?,
-        p1: String?
-    ) {
-        TODO("Not yet implemented")
     }
 
     companion object {

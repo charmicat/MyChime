@@ -14,6 +14,7 @@ import android.os.VibrationEffect
 import android.os.Vibrator
 import android.speech.tts.TextToSpeech
 import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationChannelCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -22,6 +23,7 @@ import com.vag.mychime.R
 import com.vag.mychime.activity.MainActivity
 import com.vag.mychime.preferences.TimePickerPreference
 import io.github.charmicat.vaghelper.HelperFunctions
+import com.vag.mychime.receiver.BootUpReceiver
 import java.util.Calendar
 
 class TimeService : Service() {
@@ -90,9 +92,10 @@ class TimeService : Service() {
         val channelId = "com.vag.mychime"
         val channelName = "MyChime Time Service"
 
-        val channel = NotificationChannelCompat.Builder(channelId, NotificationManagerCompat.IMPORTANCE_NONE)
-            .setName(channelName)
-            .build()
+        val channel =
+            NotificationChannelCompat.Builder(channelId, NotificationManagerCompat.IMPORTANCE_NONE)
+                .setName(channelName)
+                .build()
         NotificationManagerCompat.from(this).createNotificationChannel(channel)
 
         val notificationId = 42066
@@ -131,6 +134,7 @@ class TimeService : Service() {
                         Thread.sleep(1000)
                     } catch (e: InterruptedException) {
                         Thread.currentThread().interrupt()
+                        Log.e(tag, "Interrupted while sleeping: ", e)
                     }
 
                     currentTimeText = getString(R.string.speakTimeText_ini)
@@ -167,7 +171,7 @@ class TimeService : Service() {
             speak = true
 
             speak = when (speakOnValue) {
-                "speakHeadsetOn" -> isHeadsetPlugged(baseContext)
+                "speakHeadsetOn" -> isAudioOutputDeviceConnected()
                 "speakTimeRange" -> {
                     val iniTimeSpeak = prefs.getString("speakStartTime", "00:00") ?: "00:00"
                     val endTimeSpeak = prefs.getString("speakEndTime", "00:00") ?: "00:00"
@@ -196,7 +200,7 @@ class TimeService : Service() {
 
         if (enabledChime && chimeOnValue != "unset") {
             chime = when (chimeOnValue) {
-                "chimeHeadsetOn" -> isHeadsetPlugged(baseContext)
+                "chimeHeadsetOn" -> isAudioOutputDeviceConnected()
                 "chimeTimeRange" -> {
                     val iniTimeChime = prefs.getString("chimeStartTime", "00:00") ?: "00:00"
                     val endTimeChime = prefs.getString("chimeEndTime", "00:00") ?: "00:00"
@@ -228,7 +232,7 @@ class TimeService : Service() {
 
         if (enabledVibration && vibrationOnValue != "unset") {
             vibration = when (vibrationOnValue) {
-                "vibrationHeadsetOn" -> isHeadsetPlugged(baseContext)
+                "vibrationHeadsetOn" -> isAudioOutputDeviceConnected()
                 "vibrationTimeRange" -> {
                     val iniTimeVibration = prefs.getString("vibrationStartTime", "00:00") ?: "00:00"
                     val endTimeVibration = prefs.getString("vibrationEndTime", "00:00") ?: "00:00"
@@ -284,7 +288,11 @@ class TimeService : Service() {
         val shouldRestart = isSpeakTimeOn || isChimeOn
 
         if (shouldRestart) {
-            sendBroadcast(Intent("RestartTimeService"))
+            // Use an explicit intent targeting BootUpReceiver to avoid unsafe implicit broadcast
+            val restartIntent = Intent(this, BootUpReceiver::class.java).apply {
+                action = "RestartTimeService"
+            }
+            sendBroadcast(restartIntent)
         } else {
             Log.d(tag, "Service destroyed")
             minutesTimer?.cancel()
@@ -319,27 +327,39 @@ class TimeService : Service() {
             get() = this@TimeService
     }
 
-    private fun isHeadsetPlugged(context: Context): Boolean {
-        val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as? AudioManager ?: return false
 
+    /**
+     * Checks if a headset (wired or Bluetooth) is connected for audio output.
+     *
+     * This method is intended for use on API 23 (Marshmallow) and above.
+     *
+     * @return `true` if a wired headset, headphones, or a Bluetooth A2DP/SCO device is connected, `false` otherwise.
+     */
+    @RequiresApi(Build.VERSION_CODES.M)
+    fun Context.isAudioOutputDeviceConnected(): Boolean {
+        // Safely get the AudioManager system service.
+        val audioManager = getSystemService(Context.AUDIO_SERVICE) as? AudioManager ?: return false
+
+        // Get a list of all audio output devices.
         val devices = audioManager.getDevices(AudioManager.GET_DEVICES_OUTPUTS)
 
-        return devices.any { device ->
-            when (device.type) {
-                AudioDeviceInfo.TYPE_WIRED_HEADSET,
-                AudioDeviceInfo.TYPE_WIRED_HEADPHONES,
-                AudioDeviceInfo.TYPE_BLUETOOTH_A2DP,
-                AudioDeviceInfo.TYPE_BLUETOOTH_SCO -> true
+        // Define the types of devices we consider to be "headsets".
+        val targetDeviceTypes = setOf(
+            AudioDeviceInfo.TYPE_WIRED_HEADSET,
+            AudioDeviceInfo.TYPE_WIRED_HEADPHONES,
+            AudioDeviceInfo.TYPE_BLUETOOTH_A2DP,
+            AudioDeviceInfo.TYPE_BLUETOOTH_SCO
+        )
 
-                else -> false
-            }
-        }
+        // Return true if any of the output devices match our target types.
+        return devices.any { it.type in targetDeviceTypes }
     }
+
 
     private fun vibration() {
         val pattern = longArrayOf(0, 500, 100, 500, 100, 500, 100)
         Log.d(tag, "vibrating")
-        val vibrator = getSystemService(Context.VIBRATOR_SERVICE) as? Vibrator
+        val vibrator = getSystemService(VIBRATOR_SERVICE) as? Vibrator
         vibrator?.let {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 it.vibrate(VibrationEffect.createWaveform(pattern, -1))

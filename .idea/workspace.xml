@@ -19,21 +19,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df272ed7-8d90-4f80-b1b3-7d2303c208ed" name="Changes" comment="updates, minor improvements">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/test/kotlin/com/vag/mychime/activity/MainActivityTest.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VagHelper/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/VagHelper/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VagHelper/scripts/publish-module.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/VagHelper/scripts/publish-module.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/vag/mychime/ExampleInstrumentedTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/vag/mychime/ExampleInstrumentedTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/vag/mychime/ExampleInstrumentedTest.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/vag/mychime/preferences/MyPreferences.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/vag/mychime/preferences/MyPreferences.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/vag/mychime/ExampleUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/vag/mychime/ExampleUnitTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/vag/mychime/activity/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/com/vag/mychime/activity/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/vag/mychime/preferences/MyPreferences.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/com/vag/mychime/preferences/MyPreferences.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/vag/mychime/preferences/TimePickerDialogFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/com/vag/mychime/preferences/TimePickerDialogFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/vag/mychime/preferences/TimePickerPreference.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/com/vag/mychime/preferences/TimePickerPreference.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/vag/mychime/receiver/BootUpReceiver.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/com/vag/mychime/receiver/BootUpReceiver.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/vag/mychime/service/TimeService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/com/vag/mychime/service/TimeService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/vag/mychime/utils/ChangeLog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/com/vag/mychime/utils/ChangeLog.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/vag/mychime/ExampleUnitTest.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +57,12 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="My Chime" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -69,6 +74,8 @@
       <list>
         <option value="valueResourceFile" />
         <option value="Class" />
+        <option value="Kotlin File" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -121,7 +128,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -135,31 +142,35 @@
     <option name="sortByType" value="true" />
     <option name="sortKey" value="BY_TYPE" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Android App.MyChime.executor": "Run",
-    "Gradle.Upgrade Gradle wrapper.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "SHELLCHECK.PATH": "/home/talto/.local/share/Google/AndroidStudio2024.3/Shell Script/shellcheck",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "com.google.services.firebase.aqiPopupShown": "true",
-    "git-widget-placeholder": "#57 on codex/migrate-codebase-to-kotlin-8fb8k4",
-    "kotlin-language-version-configured": "true",
-    "project.structure.last.edited": "Suggestions",
-    "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.2",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.language.Kotlin.scripting"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Android App.MyChime.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Load Gradle Dependencies.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MyPreferencesTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Upgrade Gradle wrapper.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;SHELLCHECK.PATH&quot;: &quot;/home/talto/.local/share/Google/AndroidStudio2024.3/Shell Script/shellcheck&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;#57 on codex/migrate-codebase-to-kotlin-8fb8k4&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;/home/talto/StudioProjects/MyChime/app/src/test/kotlin/com/vag/mychime&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/talto/StudioProjects/MyChime/keystore.properties&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Suggestions&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.language.Kotlin.scripting&quot;
   }
-}]]></component>
+}</component>
   <component name="PsdUISettings">
-    <option name="MODULE_TAB" value="Signing Configs" />
-    <option name="BUILD_VARIANTS_TAB" value="Flavors" />
+    <option name="MODULE_TAB" value="Properties" />
+    <option name="BUILD_VARIANTS_TAB" value="Build Types" />
     <option name="LAST_EDITED_SIGNING_CONFIG" value="debug" />
     <option name="LAST_EDITED_BUILD_TYPE" value="debug" />
   </component>
@@ -177,8 +188,12 @@
       <recent name="/mnt/depot1/home/talto/AndroidStudioProjects/MyChime/app/src/main/res/layout" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/androidTest" />
       <recent name="$PROJECT_DIR$/stuff" />
       <recent name="/mnt/depot1/home/talto/AndroidStudioProjects/MyChime/stuff" />
+    </key>
+    <key name="TestGenerationDialog.RecentsKey">
+      <recent name="com.vag.mychime.activity" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.vag.mychime" />
@@ -187,7 +202,7 @@
       <recent name="com.vag.mychime.preferences" />
     </key>
   </component>
-  <component name="RunManager" selected="Android App.MyChime">
+  <component name="RunManager" selected="Gradle.MyPreferencesTest">
     <configuration name="MyChime" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="My_Chime.app" />
       <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
@@ -321,6 +336,30 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MyPreferencesTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:testDebugUnitTest" />
+            <option value="--tests" />
+            <option value="&quot;MyPreferencesTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="Tests in 'My Chime.My_Chime.app.unitTest'" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -361,10 +400,12 @@
       <item itemvalue="Android App.MyChime" />
       <item itemvalue="Android Instrumented Tests.All Tests" />
       <item itemvalue="Gradle.Tests in 'My Chime.My_Chime.app.unitTest'" />
+      <item itemvalue="Gradle.MyPreferencesTest" />
       <item itemvalue="JUnit.All in MyChime.My_Chime" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.MyPreferencesTest" />
         <item itemvalue="Android Instrumented Tests.All Tests" />
         <item itemvalue="JUnit.All in MyChime.My_Chime" />
       </list>
@@ -488,6 +529,9 @@
     <MESSAGE value="upgrade to current android app specs" />
     <MESSAGE value="updates, minor improvements" />
     <option name="LAST_COMMIT_MESSAGE" value="updates, minor improvements" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/My_Chime$MyPreferencesTest.ic" NAME="MyPreferencesTest Coverage Results" MODIFIED="1760758097398" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">

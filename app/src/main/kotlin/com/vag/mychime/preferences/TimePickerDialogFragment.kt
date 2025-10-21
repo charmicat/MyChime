@@ -6,8 +6,10 @@ import android.os.Bundle
 import android.text.format.DateFormat
 import android.util.Log
 import android.widget.TimePicker
+import androidx.core.content.edit
 import androidx.preference.PreferenceDialogFragmentCompat
 import java.util.Calendar
+import java.util.Locale
 
 class TimePickerDialogFragment : PreferenceDialogFragmentCompat(),
     TimePickerDialog.OnTimeSetListener {
@@ -32,12 +34,16 @@ class TimePickerDialogFragment : PreferenceDialogFragmentCompat(),
         lastHour = hour
         lastMinute = minute
 
-        val time = String.format("%02d:%02d", lastHour, lastMinute)
-        if (callChangeListener(time)) {
-            (preference as? TimePickerPreference)?.let {
-                it.summary = time
-                it.persistString(time)
+        // Use explicit locale to avoid implicit default-locale formatting
+        val time = String.format(Locale.getDefault(), "%02d:%02d", lastHour, lastMinute)
+
+        // Persist the value via the Preference's SharedPreferences and update summary
+        (preference as? TimePickerPreference)?.let { pref ->
+            val key = pref.key
+            if (key != null) {
+                pref.sharedPreferences?.edit { putString(key, time) }
             }
+            pref.summary = time
         }
     }
 

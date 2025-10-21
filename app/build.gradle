@@ -11,10 +11,17 @@ def keystorePropertiesFile = rootProject.file("keystore.properties")
 // Initializes a new Properties() object called keystoreProperties.
 def keystoreProperties = new Properties()
 def hasCustomKeystore = false
-// Loads the keystore.properties file into the keystoreProperties object.
+// Loads the keystore.properties file into the keystoreProperties object and
+// ensure the referenced keystore file actually exists before enabling custom signing.
 if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
-    hasCustomKeystore = true
+    def storeFilePath = keystoreProperties['storeFile']
+    if (storeFilePath != null && rootProject.file(storeFilePath).exists()) {
+        hasCustomKeystore = true
+    } else {
+        hasCustomKeystore = false
+        println "WARNING: keystore.properties found but storeFile '${storeFilePath}' does not exist; skipping custom signing config."
+    }
 }
 
 android {
@@ -22,6 +29,10 @@ android {
 
     signingConfigs {
         debug {
+            storeFile file(storeFile)
+            storePassword storePassword
+            keyAlias keyAlias
+            keyPassword keyPassword
             if (hasCustomKeystore) {
                 keyAlias keystoreProperties['keyAlias']
                 keyPassword keystoreProperties['keyPassword']
@@ -34,8 +45,8 @@ android {
 
     defaultConfig {
         applicationId 'com.vag.mychime'
-        minSdk 23
-        targetSdk 33
+        minSdk 26
+        targetSdk 34
         versionCode 19
         versionName '6.0'
 
@@ -56,9 +67,6 @@ android {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
-    kotlinOptions {
-        jvmTarget = '11'
-    }
     buildFeatures {
         viewBinding true
     }
@@ -70,13 +78,13 @@ dependencies {
 
     implementation 'androidx.core:core-ktx:1.17.0'
     implementation 'com.google.android.material:material:1.13.0'
-    implementation 'androidx.preference:preference:1.2.1'
+    implementation 'androidx.preference:preference-ktx:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
-    implementation 'androidx.navigation:navigation-fragment:2.9.5'
-    implementation 'androidx.navigation:navigation-ui:2.9.5'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.9.5'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.9.5'
     implementation 'io.github.charmicat:vaghelper:2.0.1'
-    implementation 'com.google.firebase:firebase-crashlytics'
-    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-crashlytics:20.0.3'
+    implementation 'com.google.firebase:firebase-analytics:23.0.0'
 
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     testImplementation('androidx.test:monitor:1.8.0')

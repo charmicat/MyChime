@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity(), MyPreferences.OnConfigurationChangedLi
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             Log.d(tag, "onActivityResult ${result.resultCode}")
             when (result.resultCode) {
-                Activity.RESULT_OK, TextToSpeech.Engine.CHECK_VOICE_DATA_PASS -> {
+                RESULT_OK, TextToSpeech.Engine.CHECK_VOICE_DATA_PASS -> {
                     isTtsAvailable = true
                 }
 
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity(), MyPreferences.OnConfigurationChangedLi
                 }
 
                 else -> {
-                    if (result.resultCode != Activity.RESULT_CANCELED) {
+                    if (result.resultCode != RESULT_CANCELED) {
                         isTtsAvailable = false
                         showInstallTtsDialog()
                     }
@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity(), MyPreferences.OnConfigurationChangedLi
         Log.d(tag, "onCreate")
         setContentView(R.layout.settings_activity)
         settings = PreferenceManager.getDefaultSharedPreferences(application)
-        val vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+        val vibrator = getSystemService(VIBRATOR_SERVICE) as Vibrator
         with(settings.edit()) {
             putBoolean("hasVibration", vibrator.hasVibrator())
             putBoolean("enableVibration", false)

@@ -12,15 +12,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df272ed7-8d90-4f80-b1b3-7d2303c208ed" name="Changes" comment="updates, minor improvements">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/vag/mychime/preferences/IntervalPickerDialogFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/vag/mychime/preferences/IntervalPickerDialogFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-pt/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-pt/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/xml/root_preferences.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/xml/root_preferences.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+    <list default="true" id="df272ed7-8d90-4f80-b1b3-7d2303c208ed" name="Changes" comment="feat: Add initial Android Studio project files&#10;&#10;Adds new configuration files for an Android Studio project, including module settings, run configurations, and device streaming caches.&#10;&#10;Also adds a new layout file `interval_picker.xml` which defines a UI for selecting a time interval with an EditText for the value and a RadioGroup for the units (seconds, minutes, hours).">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,42 +53,57 @@
     <option name="BRANCH" value="origin/master" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="remake" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "history": [
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
     {
-      "state": "OPEN",
-      "author": "charmicat"
+      &quot;state&quot;: &quot;OPEN&quot;,
+      &quot;author&quot;: &quot;charmicat&quot;
     }
   ],
-  "lastFilter": {
-    "state": "OPEN",
-    "author": "charmicat"
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;author&quot;: &quot;charmicat&quot;
   }
-}]]></component>
-  <component name="GitHubPullRequestState"><![CDATA[{
-  "prStates": [
+}</component>
+  <component name="GitHubPullRequestState">{
+  &quot;prStates&quot;: [
     {
-      "id": {
-        "id": "PR_kwDOBYWFTc6uXsg4",
-        "number": 56
+      &quot;id&quot;: {
+        &quot;id&quot;: &quot;PR_kwDOBYWFTc6uXsg4&quot;,
+        &quot;number&quot;: 56
       },
-      "lastSeen": 1761011802599
+      &quot;lastSeen&quot;: 1761011802599
     },
     {
-      "id": {
-        "id": "PR_kwDOBYWFTc6uXsq5",
-        "number": 57
+      &quot;id&quot;: {
+        &quot;id&quot;: &quot;PR_kwDOBYWFTc6uXsq5&quot;,
+        &quot;number&quot;: 57
       },
-      "lastSeen": 1761011847490
+      &quot;lastSeen&quot;: 1761011847490
     }
   ]
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/charmicat/MyChime.git",
     "accountId": "72a6965d-17fa-4e92-a9f8-b2c09cc0498c"
+  },
+  "recentNewPullRequestHead": {
+    "server": {
+      "useHttp": false,
+      "host": "github.com",
+      "port": null,
+      "suffix": null
+    },
+    "owner": "charmicat",
+    "repository": "MyChime"
   }
 }]]></component>
   <component name="HighlightingSettingsPerFile">
@@ -115,9 +123,9 @@
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="ProjectErrors" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2J8HiUCVkchNxWiZyjQ21fUr3FL" />
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
@@ -138,7 +146,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "com.google.services.firebase.aqiPopupShown": "true",
-    "git-widget-placeholder": "remake",
+    "git-widget-placeholder": "#59 on remake",
     "last_opened_file_path": "/home/talto/workspace/AndroidStudioProjects/MyChime2",
     "settings.editor.selected.configurable": "memory.settings"
   }
@@ -477,7 +485,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693517204720</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="feat: Add initial Android Studio project files&#10;&#10;Adds new configuration files for an Android Studio project, including module settings, run configurations, and device streaming caches.&#10;&#10;Also adds a new layout file `interval_picker.xml` which defines a UI for selecting a time interval with an EditText for the value and a RadioGroup for the units (seconds, minutes, hours).">
+      <option name="closed" value="true" />
+      <created>1761012332043</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1761012332043</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -491,7 +507,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/dependabot/gradle/org.mockito-mockito-core-5.8.0" />
+                        <option value="origin/android_studio" />
                       </list>
                     </value>
                   </entry>
@@ -508,6 +524,7 @@
     <MESSAGE value="upgrade to current android app" />
     <MESSAGE value="upgrade to current android app specs" />
     <MESSAGE value="updates, minor improvements" />
-    <option name="LAST_COMMIT_MESSAGE" value="updates, minor improvements" />
+    <MESSAGE value="feat: Add initial Android Studio project files&#10;&#10;Adds new configuration files for an Android Studio project, including module settings, run configurations, and device streaming caches.&#10;&#10;Also adds a new layout file `interval_picker.xml` which defines a UI for selecting a time interval with an EditText for the value and a RadioGroup for the units (seconds, minutes, hours)." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Add initial Android Studio project files&#10;&#10;Adds new configuration files for an Android Studio project, including module settings, run configurations, and device streaming caches.&#10;&#10;Also adds a new layout file `interval_picker.xml` which defines a UI for selecting a time interval with an EditText for the value and a RadioGroup for the units (seconds, minutes, hours)." />
   </component>
 </project>

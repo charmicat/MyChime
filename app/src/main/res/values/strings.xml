@@ -30,6 +30,10 @@
     <string name="changelog_show_full">more</string>
     <string name="about">About</string>
 
+    <string name="seconds_cpt">Seconds</string>
+    <string name="minutes_cpt">Minutes</string>
+    <string name="hours_cpt">Hours</string>
+
     <string-array name="clock_type">
         <item>12-hours</item>
         <item>24-hours</item>

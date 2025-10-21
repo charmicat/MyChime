@@ -13,24 +13,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df272ed7-8d90-4f80-b1b3-7d2303c208ed" name="Changes" comment="updates, minor improvements">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/vag/mychime/preferences/IntervalPickerDialogFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/vag/mychime/preferences/IntervalPickerPreference.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/xml/interval_picker.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/vag/mychime/preferences/TimePickerDialogFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/vag/mychime/preferences/TimePickerDialogFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/vag/mychime/preferences/IntervalPickerDialogFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/vag/mychime/preferences/IntervalPickerDialogFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-pt/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-pt/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/xml/root_preferences.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/xml/root_preferences.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[emulator-5554]" />
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -52,6 +52,7 @@
         <option value="valueResourceFile" />
         <option value="Class" />
         <option value="resourceFile" />
+        <option value="layoutResourceFile" />
       </list>
     </option>
   </component>
@@ -61,6 +62,42 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "history": [
+    {
+      "state": "OPEN",
+      "author": "charmicat"
+    }
+  ],
+  "lastFilter": {
+    "state": "OPEN",
+    "author": "charmicat"
+  }
+}]]></component>
+  <component name="GitHubPullRequestState"><![CDATA[{
+  "prStates": [
+    {
+      "id": {
+        "id": "PR_kwDOBYWFTc6uXsg4",
+        "number": 56
+      },
+      "lastSeen": 1761011802599
+    },
+    {
+      "id": {
+        "id": "PR_kwDOBYWFTc6uXsq5",
+        "number": 57
+      },
+      "lastSeen": 1761011847490
+    }
+  ]
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/charmicat/MyChime.git",
+    "accountId": "72a6965d-17fa-4e92-a9f8-b2c09cc0498c"
+  }
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/README.md" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/build.gradle" root0="FORCE_HIGHLIGHTING" />
@@ -78,6 +115,9 @@
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="ProjectErrors" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 6
+}]]></component>
   <component name="ProjectId" id="2J8HiUCVkchNxWiZyjQ21fUr3FL" />
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
@@ -85,16 +125,24 @@
     <option name="showLibraryContents" value="true" />
     <option name="showVisibilityIcons" value="true" />
     <option name="sortByType" value="true" />
+    <option name="sortKey" value="BY_TYPE" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/talto/GoogleDrive/workspace/MyChime_merge&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;memory.settings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "android-custom-view/home/talto/install/android-sdk-linux/sources/android-33/android/widget/RadioGroup.java_SELECTED": "RadioGroup",
+    "android.gradle.sync.needed": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "com.google.services.firebase.aqiPopupShown": "true",
+    "git-widget-placeholder": "remake",
+    "last_opened_file_path": "/home/talto/workspace/AndroidStudioProjects/MyChime2",
+    "settings.editor.selected.configurable": "memory.settings"
   }
-}</component>
+}]]></component>
   <component name="PsdUISettings">
     <option name="MODULE_TAB" value="Signing Configs" />
     <option name="BUILD_VARIANTS_TAB" value="Flavors" />
@@ -127,7 +175,8 @@
   </component>
   <component name="RunManager" selected="Android App.MyChime">
     <configuration name="MyChime" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
-      <module name="My_Chime.app.main" />
+      <module name="My_Chime.app" />
+      <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
       <option name="DEPLOY_AS_INSTANT" value="false" />
@@ -135,13 +184,17 @@
       <option name="PM_INSTALL_OPTIONS" value="" />
       <option name="ALL_USERS" value="false" />
       <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="ALLOW_ASSUME_VERIFIED" value="false" />
       <option name="CLEAR_APP_STORAGE" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
       <option name="MODE" value="default_activity" />
+      <option name="RESTORE_ENABLED" value="false" />
+      <option name="RESTORE_FILE" value="" />
+      <option name="RESTORE_FRESH_INSTALL_ONLY" value="false" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
-      <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
       <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
       <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
       <option name="DEBUGGER_TYPE" value="Auto" />
@@ -185,6 +238,7 @@
         <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
       </Profilers>
       <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
       <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
@@ -193,6 +247,7 @@
       </method>
     </configuration>
     <configuration name="All Tests" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests" temporary="true" nameIsGenerated="true">
+      <option name="ANDROID_TEST_RUN_CONFIGURATION_SCHEMA_VERSION" value="0" />
       <option name="TESTING_TYPE" value="0" />
       <option name="METHOD_NAME" value="" />
       <option name="CLASS_NAME" value="" />
@@ -205,7 +260,6 @@
       <option name="RETENTION_COMPRESS_SNAPSHOTS" value="false" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
-      <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
       <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
       <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
       <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
@@ -272,12 +326,26 @@
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
     <configuration name="All in MyChime.My_Chime" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MyChime.My_Chime" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="My Chime" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="My Chime" />
+      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -395,7 +463,21 @@
       <option name="project" value="LOCAL" />
       <updated>1681681924493</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="updates, minor improvements">
+      <created>1693517190681</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1693517190681</updated>
+    </task>
+    <task id="LOCAL-00015" summary="updates, minor improvements">
+      <created>1693517204720</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1693517204720</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -409,7 +491,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="remake" />
+                        <option value="origin/dependabot/gradle/org.mockito-mockito-core-5.8.0" />
                       </list>
                     </value>
                   </entry>

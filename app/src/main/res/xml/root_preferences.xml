@@ -5,9 +5,10 @@
     <PreferenceCategory
         app:key="period"
         app:title="@string/periodCpt">
-        <!--<com.vag.mychime.preferences.IntervalPickerPreference
-            android:key="intervalDef"
-            app:dialogTitle="@string/periodCpt" />-->
+        <Preference
+            android:key="interval_picker"
+            android:layout="@layout/interval_picker"
+            android:title="@string/periodCpt" />
         <SwitchPreference
             android:key="openIntervalPicker"
             app:fragment="com.vag.mychime.preferences.IntervalPickerDialogFragment" />

@@ -1,6 +1,9 @@
 package com.vag.mychime.preferences;
 
+import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -22,12 +25,18 @@ public class IntervalPickerDialogFragment extends PreferenceDialogFragmentCompat
     private String intervalDefinition;
 
     @Override
-    public void onCreate(Bundle savedInstanceState, String rootKey) {
-        setPreferencesFromResource(R.xml.interval_picker, rootKey);
-        EditTextPreference intervalSize = findPreference("intervalSize");
-        CheckBoxPreference intervalUnit = findPreference("intervalUnit");
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        Log.d(TAG, "onCreate");
+        // Use the current time as the default values for the picker
+        final Calendar c = Calendar.getInstance();
+        int hour = c.get(Calendar.HOUR_OF_DAY);
+        int minute = c.get(Calendar.MINUTE);
 
-        intervalSize.setSummaryProvider(EditTextPreference.SimpleSummaryProvider.getInstance());
+        // Create a new instance of TimePickerDialog and return it
+        picker = new IntervalPickerDialogFragment(getActivity(), this, hour, minute,
+                DateFormat.is24HourFormat(getActivity()));
+
+        return picker;
     }
 
     @Override
